@@ -1,0 +1,9 @@
+extra_hours,policy,median_hours,p95_hours,over_72_pct
+0,serial,49.75,119.76,26.38
+0,parallel,39.60,97.38,14.61
+6,serial,49.75,119.76,26.38
+6,parallel,45.60,103.38,19.06
+12,serial,49.75,119.76,26.38
+12,parallel,51.60,109.38,23.92
+18,serial,49.75,119.76,26.38
+18,parallel,57.60,115.38,30.40
