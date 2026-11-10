@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>درخواست خدمات عمومی | BPMSad</title>
+<style>
+body {font: 1rem/1.8 system-ui; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; color: #173038; background: #f4faf9}
+form {display: grid; gap: .8rem; background: white; padding: 1.5rem; border-radius: 1rem}
+label {display: grid}
+input, textarea, button {font: inherit; padding: .5rem}
+button {background: #09574c; color: white; border: 0; border-radius: .4rem; cursor: pointer}
+</style>
+<main>
+<h1>درخواست خدمات عمومی</h1>
+<p>فرم را با دادهٔ نمونه پر کنید و فایل JSON را دانلود کنید. داده‌ها در مرورگر شما می‌مانند.</p>
+<form>
+<label>عنوان <input name="title" required maxlength="120"></label>
+<label>شرح <textarea name="description" required maxlength="2000" rows="5"></textarea></label>
+<button>دانلود درخواست</button>
+<output role="status"></output>
+</form>
+</main>
+<script>
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const request = Object.fromEntries(new FormData(form));
+  request.title = request.title.trim();
+  request.description = request.description.trim();
+  const output = form.querySelector('output');
+  if (!request.title || !request.description) {
+    output.textContent = 'عنوان و شرح را وارد کنید.';
+    return;
+  }
+  const file = new Blob([JSON.stringify(request, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(file);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'service-request.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  output.textContent = 'فایل درخواست آماده شد.';
+});
+</script>
+</html>

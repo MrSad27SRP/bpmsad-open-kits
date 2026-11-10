@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions" targetNamespace="urn:bpmsad:open-kits">
+  <bpmn:process id="ServiceRequest" name="درخواست خدمات عمومی" isExecutable="false">
+    <bpmn:startEvent id='Start' name='آغاز'/>
+    <bpmn:userTask id='Register' name='ثبت درخواست'/>
+    <bpmn:userTask id='Review' name='بررسی درخواست'/>
+    <bpmn:exclusiveGateway id='Decision' name='تأیید شد؟'/>
+    <bpmn:userTask id='Fulfill' name='ارائه خدمت'/>
+    <bpmn:endEvent id='Done' name='انجام شد'/>
+    <bpmn:endEvent id='Rejected' name='رد شد'/>
+    <bpmn:sequenceFlow id='F0' sourceRef='Start' targetRef='Register' name=''/>
+    <bpmn:sequenceFlow id='F1' sourceRef='Register' targetRef='Review' name=''/>
+    <bpmn:sequenceFlow id='F2' sourceRef='Review' targetRef='Decision' name=''/>
+    <bpmn:sequenceFlow id='F3' sourceRef='Decision' targetRef='Fulfill' name='بله'/>
+    <bpmn:sequenceFlow id='F4' sourceRef='Fulfill' targetRef='Done' name=''/>
+    <bpmn:sequenceFlow id='F5' sourceRef='Decision' targetRef='Rejected' name='خیر'/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram">
+    <bpmndi:BPMNPlane id="Plane" bpmnElement="ServiceRequest">
+      <bpmndi:BPMNShape id='Start_di' bpmnElement='Start'><dc:Bounds x='40' y='102' width='36' height='36'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id='Register_di' bpmnElement='Register'><dc:Bounds x='115' y='80' width='100' height='80'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id='Review_di' bpmnElement='Review'><dc:Bounds x='255' y='80' width='100' height='80'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id='Decision_di' bpmnElement='Decision'><dc:Bounds x='395' y='95' width='50' height='50'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id='Fulfill_di' bpmnElement='Fulfill'><dc:Bounds x='485' y='80' width='100' height='80'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id='Done_di' bpmnElement='Done'><dc:Bounds x='625' y='102' width='36' height='36'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id='Rejected_di' bpmnElement='Rejected'><dc:Bounds x='402' y='210' width='36' height='36'/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id='F0_di' bpmnElement='F0'><di:waypoint x='76' y='120'/><di:waypoint x='115' y='120'/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id='F1_di' bpmnElement='F1'><di:waypoint x='215' y='120'/><di:waypoint x='255' y='120'/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id='F2_di' bpmnElement='F2'><di:waypoint x='355' y='120'/><di:waypoint x='395' y='120'/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id='F3_di' bpmnElement='F3'><di:waypoint x='445' y='120'/><di:waypoint x='485' y='120'/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id='F4_di' bpmnElement='F4'><di:waypoint x='585' y='120'/><di:waypoint x='625' y='120'/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id='F5_di' bpmnElement='F5'><di:waypoint x='420' y='145'/><di:waypoint x='420' y='210'/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
