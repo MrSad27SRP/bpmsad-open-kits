@@ -42,3 +42,5 @@ await submitRequest('http://localhost:3000/requests', {
 ## پژوهش
 
 [مطالعهٔ بازتولیدپذیر مغایرت تراکنش](research/README.md)
+
+[بستهٔ آموزشی مغایرت تراکنش](dispute/README.md)
